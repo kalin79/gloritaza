@@ -1,0 +1,27 @@
+/// Mixin genérico para responsive de una propiedad
+/// $prop: nombre de la propiedad
+/// $values: map con keys default, sm, md…
+@mixin propiedadResponsiva($prop, $values) {
+    & {
+        #{$prop}: map-get($values, default);
+    }
+
+    @each $bp-name, $bp-value in $breakpoints {
+        @if map-has-key($values, $bp-name) {
+            @media (min-width: $bp-value) {
+                & {
+                    #{$prop}: map-get($values, $bp-name);
+                }
+            }
+        }
+    }
+}
+
+// Define propiedades comunes de títulos
+%tituloMenuBase {
+    font-family: "misti_fontregular", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoTituloMenu);
+    @include propiedadResponsiva(font-size, $tituloMenu);
+}
