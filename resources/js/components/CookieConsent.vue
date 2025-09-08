@@ -16,7 +16,7 @@
 
             const loadGTM = () => {
                 if (!window.dataLayer) {
-                    const gtmId = 'GTM-N8NG4T5S'; // reemplaza con tu ID
+                    const gtmId = 'GTM-XXXXXX'; // reemplaza con tu ID
                     const script = document.createElement('script');
                     script.src = `https://www.googletagmanager.com/gtm.js?id=${gtmId}`;
                     script.async = true;
@@ -27,7 +27,7 @@
             };
 
             const loadGAScript = () => {
-                const gtmId = 'GTM-N8NG4T5S'; // reemplaza con tu ID
+                const gtmId = 'GTM-xxxxxxx'; // reemplaza con tu ID
                 if (!window.gtag) {
                     const script = document.createElement('script');
                     script.src = `https://www.googletagmanager.com/gtag/js?id=${gtmId}`; // reemplaza con tu ID

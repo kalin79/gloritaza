@@ -25,3 +25,91 @@
     @include propiedadResponsiva(line-height, $interlineadoTituloMenu);
     @include propiedadResponsiva(font-size, $tituloMenu);
 }
+
+%tituloBotonBase {
+    font-family: "misti_fontregular", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoTituloBoton);
+    @include propiedadResponsiva(font-size, $tituloBoton);
+}
+
+%tituloBotonGrandeBase {
+    font-family: "misti_fontregular", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoTituloBotonGrande);
+    @include propiedadResponsiva(font-size, $tituloBotonGrande);
+}
+
+%tituloGrandeBase {
+    font-family: "misti_fontbold", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoTituloGrande);
+    @include propiedadResponsiva(font-size, $tituloGrande);
+}
+
+%tituloMedianoBase {
+    font-family: "misti_fontbold", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoTituloMediano);
+    @include propiedadResponsiva(font-size, $tituloMediano);
+}
+
+%tituloPequenoBase {
+    font-family: "misti_fontbold", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoTituloPequeno);
+    @include propiedadResponsiva(font-size, $tituloPequeno);
+}
+
+%subTituloBase {
+    font-family: "misti_fontregular", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoSubTitulo);
+    @include propiedadResponsiva(font-size, $subTitulo);
+}
+
+%subTituloPequenoBase {
+    font-family: "misti_fontregular", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoSubTituloPequeno);
+    @include propiedadResponsiva(font-size, $subTituloPequeno);
+}
+
+%descripcionBase {
+    font-family: "misti_fontregular", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoDescripcion);
+    @include propiedadResponsiva(font-size, $descripcion);
+}
+
+%descripcionMedianoBase {
+    font-family: "misti_fontregular", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoDescripcionMediano);
+    @include propiedadResponsiva(font-size, $descripcionMediano);
+}
+
+%descripcionPequenoBase {
+    font-family: "misti_fontregular", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoDescripcionPequeno);
+    @include propiedadResponsiva(font-size, $descripcionPequeno);
+}
+
+%descripcionGrandeBase {
+    font-family: "misti_fontregular", sans-serif;
+    color: $blanco;
+    letter-spacing: -.025em;
+    @include propiedadResponsiva(line-height, $interlineadoDescripcionGrande);
+    @include propiedadResponsiva(font-size, $descripcionGrande);
+}

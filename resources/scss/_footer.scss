@@ -1,0 +1,35 @@
+.footerContainer {
+    background: $celeste;
+    padding-bottom: 3rem;
+
+    .footerContent {
+        overflow: hidden;
+        border-radius: 10px;
+        background: $azulP;
+
+        .legalContent {
+            padding: 1.75rem 1rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .redesSocialesContainer {
+            border-bottom: 2px solid white;
+            padding: 2rem 1rem 2rem;
+
+            .redesSocialesListado {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 1.5rem;
+                margin-top: 1rem;
+            }
+        }
+
+        .gloriaLatas {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

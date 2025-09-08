@@ -12,14 +12,14 @@
       <router-view />
     </main>
     <Footer />
-    <CookieBanner />
+    <!-- <CookieBanner /> -->
   </div>
 </template>
 
 <script setup>
 import Header from '@/js/components/Header.vue';
 import Footer from '@/js/components/Footer.vue';
-import CookieBanner from '@/js/components/CookieConsent.vue';
+// import CookieBanner from '@/js/components/CookieConsent.vue';
 import Overlay from '@/js/components/Overlay.vue';
 
 import { useLightboxStore } from '@/js/stores/useLightboxStore';

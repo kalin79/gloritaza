@@ -2,10 +2,60 @@
     padding: 0 2vw;
 }
 
+// Estilos para los textos fuentes
+
 .titleNav {
     @extend %tituloMenuBase;
 }
 
+.titleBoton {
+    @extend %tituloBotonBase;
+}
+
+.titleBotonGrande {
+    @extend %tituloBotonGrandeBase;
+}
+
+.tituloGrande {
+    @extend %tituloGrandeBase;
+}
+
+.tituloMediano {
+    @extend %tituloMedianoBase;
+}
+
+.tituloPequeno {
+    @extend %tituloPequenoBase;
+}
+
+.subTitulo {
+    @extend %subTituloBase;
+}
+
+.subTituloPequeno {
+    @extend %subTituloPequenoBase;
+}
+
+.descripcion {
+    @extend %descripcionBase;
+}
+
+.descripcionMediano {
+    @extend %descripcionMedianoBase;
+}
+
+.descripcionPequeno {
+    @extend %descripcionPequenoBase;
+}
+
+.descripcionGrande {
+    @extend %descripcionGrandeBase;
+}
+
+// Estilos para los colores de los textos
+.colorTxtAzul {
+    color: $azulP !important;
+}
 
 .colorTxtNaranja {
     color: $naranja !important;
@@ -23,6 +73,8 @@
     color: $crema !important;
 }
 
+// tipos estilo para las fuentes de los textos
+
 .txtBold {
     font-family: 'misti_fontbold' !important;
 }
@@ -32,7 +84,27 @@
 }
 
 .txtRegular {
+    font-family: 'misti_fontregular' !important;
+}
+
+.txtLight {
     font-family: 'misti_fontlight' !important;
+}
+
+.txtMedium {
+    font-family: 'misti_fontmedium' !important;
+}
+
+// botones
+
+.btnGral {
+    padding: .65rem .5rem .5rem;
+    background: $grisClaro;
+    border-radius: 0;
+
+    &.active {
+        background: $rojo;
+    }
 }
 
 .cookie-banner {
@@ -261,6 +333,218 @@
                     line-height: 1.5em;
                 }
             }
+        }
+    }
+}
+
+input[type="text"],
+input[type="email"] {
+    background: transparent;
+    border: 0px;
+    width: 100%;
+    border: 1px solid black;
+    height: 100%;
+    padding: 0 1rem;
+    background: white;
+
+    &::placeholder {
+        color: $azulP;
+        opacity: .65;
+    }
+}
+
+/* Texto, fondo y borde cuando el navegador autocompleta */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-text-fill-color: #111;
+    /* color del texto */
+    caret-color: #111;
+    /* color del cursor */
+    box-shadow: 0 0 0 1000px #fff inset;
+    /* “pinta” el fondo */
+    border: 0px solid #ccc;
+    /* tu borde */
+    transition: background-color 9999s;
+    /* truco para evitar el amarillo */
+}
+
+// maps
+
+.mapaContainer {
+    background: $crema;
+    padding: 3rem 0;
+
+    .headerMapa {
+        .tabsMain {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+
+            .tabsContainer {
+                display: flex;
+                justify-content: center;
+                width: 90%;
+                gap: .5rem;
+                flex-wrap: wrap;
+
+                button {
+                    text-align: center;
+                    background: white;
+                    padding: .5rem 1rem;
+                    border-radius: 15px;
+                    color: $azulP;
+
+                    &.active {
+                        background: $azulP;
+                        color: white;
+                    }
+                }
+            }
+        }
+
+
+        .centerSearchContainer {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+
+            .searchContainer {
+                width: 80%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: .5rem;
+                height: 50px;
+
+                @media screen and (min-width: 1200px) {
+                    width: 854px;
+                }
+
+                .inputSeachContainer {
+                    flex: 1;
+                    position: relative;
+                    height: 100%;
+
+                    img {
+                        position: absolute;
+                        width: 24px;
+                        height: 24px;
+                        right: 1rem;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+
+                .btnContainer {
+                    flex: 0 0 123px;
+
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        h2,
+        p {
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+
+            @media screen and (min-width: 768px) {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+
+.map-container {
+    position: relative;
+    border: 1px solid $azulP;
+    overflow: hidden;
+    border-radius: 10px;
+
+    .lisScrollContainer {
+        overflow: auto;
+        height: 150px;
+
+        @media screen and (min-width: 992px) {
+            height: 800px;
+        }
+
+        .btnContainer {
+            display: flex;
+            justify-content: flex-end;
+
+            button {
+                width: 150px;
+                background: $celeste;
+
+            }
+        }
+
+        .alignItems {
+            display: flex;
+            justify-content: flex-start;
+            gap: .25rem;
+            align-items: center;
+        }
+
+        p,
+        h3 {
+            margin-bottom: .5rem;
+        }
+    }
+
+    .listContainer {
+        width: 100%;
+        overflow-y: auto;
+        position: absolute;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+
+        @media screen and (min-width: 992px) {
+            position: absolute;
+            top: 1rem;
+            bottom: auto;
+            left: 1rem;
+            width: 407px;
+        }
+
+        .location-item {
+            border-top: 1px solid $azulP;
+            margin: 0;
+            padding: 1.5rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            background: white;
+
+            @media screen and (min-width: 992px) {
+                margin: 10px;
+                border: 1px solid $azulP;
+            }
+        }
+
+        .location-item div {
+            cursor: pointer;
+        }
+    }
+
+    .mapGoogleContainer {
+        width: 100%;
+        z-index: 9;
+        position: relative;
+        width: 100%;
+        height: 636px;
+
+        @media screen and (min-width: 992px) {
+            height: 853px;
         }
     }
 }
