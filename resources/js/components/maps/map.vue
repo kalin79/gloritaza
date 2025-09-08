@@ -58,7 +58,7 @@ import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
 
 // Refs for state management
-const googleMapsApiKey = 'AIzaSyCtBNQ-hz7ZqkqXQw7DKCczBLCk5Zu1KFs'; // Reemplaza con tu clave
+const googleMapsApiKey = import.meta.env.VITE_MAP_API_KEY; // Reemplaza con tu clave
 const center = ref({ lat: -12.046374, lng: -77.042793 }); // Coordenadas para el mapa
 const initialCenter = ref({ lat: -12.046374, lng: -77.042793 }); // Coordenadas iniciales
 const allLocations = ref([]);
@@ -71,7 +71,7 @@ const radiusKm = 1; // Radio de 1 km
 const map = ref(null); // Referencia al mapa
 const infoWindow = ref(null); // Referencia a la InfoWindow
 const isMapReady = ref(false); // Bandera para indicar si el mapa está listo
-const mapId = '877337882e28ba70ecdbe40c'; // Reemplaza con tu Map ID
+const mapId = import.meta.env.VITE_ID_MAP;  // Reemplaza con tu Map ID
 const imgSearch = '/images/search.svg';
 const inputRef = ref(null); // Ref para el input de búsqueda
 const autocomplete = ref(null); // Ref para el autocompletado

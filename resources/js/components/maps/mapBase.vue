@@ -5,7 +5,7 @@
 <script setup>
 import { onMounted } from 'vue'
 
-const googleMapsApiKey = 'AIzaSyCtBNQ-hz7ZqkqXQw7DKCczBLCk5Zu1KFs'; 
+const googleMapsApiKey = ''; 
 
 // Array de tiendas
 const stores = [
