@@ -10,8 +10,16 @@
         .legalContent {
             padding: 1.75rem 1rem 1rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+
+            @media screen and (min-width: 992px) {
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+
+            }
         }
 
         .redesSocialesContainer {

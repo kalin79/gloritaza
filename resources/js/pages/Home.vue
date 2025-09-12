@@ -51,7 +51,8 @@ useHead({
           "priceCurrency": "PEN",
           "price": "3.50",
           "availability": "https://schema.org/InStock",
-          "url": "https://gloria.pe/promociones/gloritaza"
+          "url": "https://gloria.pe/promociones/gloritaza",
+          "priceValidUntil" : "2025-10-31"
         }
       })
     }

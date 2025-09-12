@@ -4,15 +4,15 @@
             <div class="gridContainer">
                 <div>
                     <router-link to="/" class="logoContainer">
-                        <img :src="imgLogo" ref="logoImg" alt="Logo de Gloria" width="162" height="112" loading="eager"/>
+                        <img :src="imgLogo" ref="logoImg" alt="Leche Gloria - Logo oficial" width="162" height="112" loading="eager"/>
                     </router-link>
                 </div>
-                <div>
+                <!-- <div>
                     <div class="alignButtonContainer">
                         <button class="btnGral titleBoton colorTxtAzul" @click="scrollToSection('#seccion1')">Preguntas Frecuentas</button>
                         <button class="btnGral active titleBoton" @click="scrollToSection('#seccion2')">DONDE CANJEAR</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
        
@@ -45,19 +45,19 @@ function scrollToSection(selector) {
 onMounted(() => {
     ScrollTrigger.create({
         trigger: document.body,
-        start: "100 top", // cuando pasas 100px
+        start: "0 0", // cuando pasas 100px
         onEnter: () => {
             gsap.to(navbar.value, {
-                backgroundColor: "rgba(255, 255, 255, 0.85)",
+                backgroundColor: "rgba(255, 255, 255, 1)",
                 borderBottom: "1px solid #DDDDDD", 
                 duration: 0.4,
                 ease: "power2.out"
             });
-            gsap.to(logoImg.value, {
-                width: 120, // nuevo ancho en px
-                duration: 0.4,
-                ease: "power2.out"
-            });
+            // gsap.to(logoImg.value, {
+            //     width: 120, // nuevo ancho en px
+            //     duration: 0.4,
+            //     ease: "power2.out"
+            // });
         },
         onLeaveBack: () => {
             gsap.to(navbar.value, {
@@ -66,11 +66,11 @@ onMounted(() => {
                 duration: 0.4,
                 ease: "power2.out"
             });
-            gsap.to(logoImg.value, {
-                width: 180, // nuevo ancho en px
-                duration: 0.4,
-                ease: "power2.out"
-            });
+            // gsap.to(logoImg.value, {
+            //     width: 180, // nuevo ancho en px
+            //     duration: 0.4,
+            //     ease: "power2.out"
+            // });
         }
     });
 });

@@ -1,5 +1,9 @@
 .bannerHomeMain {
-    margin-top: 5.5rem;
+    margin-top: 5rem;
+
+    @media screen and (min-width: 992px) {
+        margin-top: 5.5rem;
+    }
 
     .bannerContainer {
         background: $azulP;
@@ -21,9 +25,13 @@
                 align-items: flex-start;
                 flex-direction: column;
                 padding-left: 1rem;
+                padding-top: 2rem;
+                padding-bottom: 1.5rem;
 
                 @media screen and (min-width: 768px) {
                     padding-left: 2rem;
+                    padding-top: 0rem;
+                    padding-bottom: 0rem;
                 }
 
                 @media screen and (min-width: 1400px) {

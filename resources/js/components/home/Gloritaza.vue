@@ -5,13 +5,22 @@
                 <div>
                     <div class="infoContainer">
                         <div class="headerInfo">
-                            <img :src="imgTaza" alt="">
+                            <img :src="imgTaza" alt="Gloritaza - Taza promocional de Leche Gloria" />
                         </div>
                         <div class="bodyInfo">
-                            <h3 class="tituloMediano colorTxtAzul">
-                                ¿Como llevarte <br />
-                                tu gloritaza?
-                            </h3>
+                            <div class="pc">
+                                <h3 class="tituloMediano colorTxtAzul">
+                                    ¿Como llevarte <br />
+                                    tu gloritaza?
+                                </h3>
+                            </div>
+                            <div class="movil">
+                                <h3 class="tituloMediano colorTxtAzul topmarginH3">
+                                    ¿Como <br />
+                                    llevarte tu <br />
+                                    gloritaza?
+                                </h3>
+                            </div>
                         </div>
                         <div class="footerInfo">
                             <div class="fechaContainer">

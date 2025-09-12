@@ -7,8 +7,8 @@
                         <h1 class="tituloGrande">
                             ¡Vuelven las Gloritazas!
                         </h1>
-                        <h2 class="subTitulo">
-                            La promoción de Leche Gloria <br />que estabas esperando.
+                        <h2 class="subTitulo txtLight">
+                            Canjea la tuya hoy mismo
                         </h2>
                         <button class="btnGral titleBotonGrande active" @click="scrollToSection('#seccion2')">
                             <img :src="imgBtn" alt="Encuentra tu tienda más cercana" />
@@ -18,7 +18,7 @@
                 </div>
                 <div>
                     <div class="imgContainer">
-                        <img :src="imgLatas" alt="¡Vuelven las Gloritazas!"/>
+                        <img :src="imgLatas" alt="Promoción Gloritaza - Canjea con 3 etiquetas de Leche Gloria más S/3.50" loading="lazy" />
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@ import ScrollToPlugin from "gsap/ScrollToPlugin"; // 👈 IMPORTANTE
 gsap.registerPlugin(ScrollToPlugin); // 👈 REGISTRAR
 
 const imgBtn='/images/iconBtn.svg';
-const imgLatas='/images/latas.webp';
+const imgLatas='/images/banner.webp';
 
 function scrollToSection(selector) {
     gsap.to(window, {

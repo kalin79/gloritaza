@@ -2,52 +2,131 @@
     <div class="mapaContainer" id="seccion2">
         <div class="containerFluid">
             <div class="headerMapa">
-                <h2 class="tituloPequeno colorTxtAzul">Hay un punto de canje cerca de ti</h2>
+                <h2 class="tituloPequeno colorTxtAzul">Hay un punto de <br />canje cerca de ti</h2>
                 <p class="descripcionGrande colorTxtAzul">Encuentra dónde canjear tu Gloritaza.</p>
-                <div class="centerSearchContainer">
-                    <div class="searchContainer">
-                        <div class="inputSeachContainer">
-                            <input class="descripcionGrande colorTxtAzul" ref="inputRef" type="text" v-model="searchQuery" placeholder="Buscar por distrito o dirección" @input="applyFilters" />
-                            <img :src="imgSearch" alt="" />
+                <div class="pc">
+                    <div class="filtrosContent">
+                        <div class="ubicacionBox">
+                            <label for="" class="descripcionGrande colorTxtAzul">Ubicación</label>
+                            <div class="custom-select-container">
+                                <img :src="iconDown" class="arrowDownSelect" />
+                                <select
+                                    v-model="filterType"
+                                    class="custom-select"
+                                    >
+                                    <option value="" selected>Elige Ubicación</option>
+                                    <option v-for="tipo in alltipos" :key="tipo.value" :value="tipo.value">
+                                        {{ tipo.name }}
+                                    </option>
+                                </select>
+                            </div>    
                         </div>
-                        <!-- <div class="btnContainer">
-                            <button class="descripcionGrande btnGral active colorTxtBlanco">Buscar</button>
-                        </div> -->
+                        <div class="centerSearchContainer">
+                            <div class="searchContainer">
+                                <div class="inputSeachContainer">
+                                    <input class="descripcionGrande colorTxtAzul" ref="inputRef" type="text" v-model="searchQuery" placeholder="Buscar por distrito o dirección" @input="applyFilters" />
+                                    <img :src="imgSearch" alt="" />
+                                </div>
+                                <!-- <div class="btnContainer">
+                                    <button class="descripcionGrande btnGral active colorTxtBlanco">Buscar</button>
+                                </div> -->
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="tabsMain">
-                    <div class="tabsContainer">
-                        <button @click="filterType = null" :class="['descripcionMediano', 'txtBold', {active : filterType === null}]">Todos</button>
-                        <button v-for="(tipo, index) in alltipos" :key="index" @click="filterType = tipo.value" :class="['descripcionMediano', {active : filterType === tipo.value}]">{{ tipo.name }}</button>
-                    </div>
+                <div class="movil">
+                    <div class="centerSearchContainer">
+                            <div class="searchContainer">
+                                <div class="inputSeachContainer">
+                                    <input class="descripcionGrande colorTxtAzul" ref="inputRef" type="text" v-model="searchQuery" placeholder="Buscar por distrito o dirección" @input="applyFilters" />
+                                    <img :src="imgSearch" alt="" />
+                                </div>
+                                <!-- <div class="btnContainer">
+                                    <button class="descripcionGrande btnGral active colorTxtBlanco">Buscar</button>
+                                </div> -->
+                            </div>
+                        </div>
                 </div>
             </div>
             <div class="map-container">
-                <div class="listContainer">
-                    <div class="lisScrollContainer">
-                        <div v-for="location in locations" :key="location.id" class="location-item">
-                            <div @click="centerOnLocation(location)">
-                                <h3 class="alignItems descripcionMediano colorTxtAzul">
-                                    <img :src="iconlocal" :alt="location.name"/>
-                                    <span>{{ location.name }}</span>
-                                </h3>
-                                <p class="alignItems descripcionMediano colorTxtAzul">
-                                    <img :src="iconping" :alt="location.address"/>
-                                    <span>{{ location.address }}</span>
-                                </p>
-                                <p class="alignItems descripcionMediano colorTxtAzul">
-                                    <img :src="iconhorario" :alt="location.address"/>
-                                    <span>{{ location.hours }}</span>
-                                </p>
-                                <p class="descripcionMediano colorTxtAzul">Distancia: ~{{ calculateDistancePlaceholder(location) }} km</p>
-                            </div>
-                            <div class="btnContainer">
-                                <button class="btnGral" @click="openDirections(location)">Cómo llegar</button>
+                <div class="pc">
+                    <div class="listContainer">
+                        <div class="lisScrollContainer">
+                            <div v-for="location in locations" :key="location.id" class="location-item">
+                                <div @click="centerOnLocation(location)">
+                                    <h3 class="alignItems descripcionMediano colorTxtAzul">
+                                        <img :src="iconlocal" :alt="location.name"/>
+                                        <span>{{ location.name }}</span>
+                                    </h3>
+                                    <p class="alignItems descripcionMediano colorTxtAzul">
+                                        <img :src="iconping" :alt="location.address"/>
+                                        <span>{{ location.address }}</span>
+                                    </p>
+                                    <p class="alignItems descripcionMediano colorTxtAzul">
+                                        <img :src="iconhorario" :alt="location.address"/>
+                                        <span>{{ location.hours }}</span>
+                                    </p>
+                                    <p class="alignItems descripcionMediano colorTxtAzul">
+                                        <img :src="icondistancia" :alt="location.address"/>
+                                        <span>Distancia: ~{{ calculateDistancePlaceholder(location) }} km</span>
+                                    </p>
+                                </div>
+                                <div class="btnContainer">
+                                    <button class="btnGral" @click="openDirections(location)">Cómo llegar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="map" class="mapGoogleContainer"></div>
+            </div>
+            <div class="movil">
+                <div class="filtrosContentMovil">
+                    <div class="ubicacionBox">
+                        <label for="" class="descripcionGrande colorTxtAzul">Ubicación</label>
+                        <div class="custom-select-container">
+                            <img :src="iconDown" class="arrowDownSelect" />
+                            <select
+                                v-model="filterType"
+                                class="custom-select"
+                                >
+                                <option value="" selected>Elige Ubicación</option>
+                                <option v-for="tipo in alltipos" :key="tipo.value" :value="tipo.value">
+                                    {{ tipo.name }}
+                                </option>
+                            </select>
+                        </div>    
+                    </div>
+                </div>
+                <div class="listadoUbicacionMovil">
+                    <div class="listContainer">
+                        <div class="lisScrollContainer">
+                            <div v-for="location in locations" :key="location.id" class="location-item">
+                                <div @click="centerOnLocation(location)">
+                                    <h3 class="alignItems descripcionMediano colorTxtAzul">
+                                        <img :src="iconlocal" :alt="location.name"/>
+                                        <span>{{ location.name }}</span>
+                                    </h3>
+                                    <p class="alignItems descripcionMediano colorTxtAzul">
+                                        <img :src="iconping" :alt="location.address"/>
+                                        <span>{{ location.address }}</span>
+                                    </p>
+                                    <p class="alignItems descripcionMediano colorTxtAzul">
+                                        <img :src="iconhorario" :alt="location.address"/>
+                                        <span>{{ location.hours }}</span>
+                                    </p>
+                                    <p class="alignItems descripcionMediano colorTxtAzul">
+                                        <img :src="icondistancia" :alt="location.address"/>
+                                        <span>Distancia: ~{{ calculateDistancePlaceholder(location) }} km</span>
+                                    </p>
+                                </div>
+                                <div class="btnContainer">
+                                    <button class="btnGral" @click="openDirections(location)">Cómo llegar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -56,7 +135,9 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
-
+import vSelect from "vue-select";
+import "vue-select/dist/vue-select.css";
+const selectedOption= ref(null);
 // Refs for state management
 const googleMapsApiKey = import.meta.env.VITE_MAP_API_KEY; // Reemplaza con tu clave
 const center = ref({ lat: -12.046374, lng: -77.042793 }); // Coordenadas para el mapa
@@ -64,7 +145,7 @@ const initialCenter = ref({ lat: -12.046374, lng: -77.042793 }); // Coordenadas 
 const allLocations = ref([]);
 const alltipos = ref([]);
 const locations = ref([]);
-const filterType = ref(null);
+const filterType = ref("");
 const searchQuery = ref('');
 const selectedLocation = ref(null);
 const radiusKm = 1; // Radio de 1 km
@@ -79,7 +160,8 @@ const autocomplete = ref(null); // Ref para el autocompletado
 const iconlocal='/images/iconlocal.svg';
 const iconping='/images/iconping.svg';
 const iconhorario='/images/iconhorario.svg';
-
+const icondistancia='/images/icondistancia.svg';
+const iconDown='/images/down.svg'
 const fetchTipos = async () => {
     try {
         const response = await axios.get('/data/tipos.json');
@@ -205,7 +287,17 @@ const applyFilters = () => {
 
 function getMarkerIcon(type) {
   const image = "/images/location.png";
-  return image; // Devuelve la URL de la imagen
+  const isMobile = window.innerWidth < 768;
+  // Medidas según dispositivo
+  const size = isMobile ? new google.maps.Size(25, 21) : new google.maps.Size(35, 30);
+
+
+  return {
+    url: image,
+    scaledSize: size, // aquí defines el tamaño final del ícono
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(size.width / 2, size.height), // ajusta el "punto de apoyo"
+  };
 }
 
 const calculateDistance = (lat1, lng1, lat2, lng2) => {
@@ -375,7 +467,7 @@ const initMap = () => {
 };
 
 
-onMounted(() => {
+const loadGoogleMaps = () => {
     // Cargar Google Maps dinámicamente
     const script = document.createElement('script')
     script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=marker,places&callback=initMap`
@@ -386,7 +478,44 @@ onMounted(() => {
     setUserLocation();
     fetchLocations();
     fetchTipos();
-});
+}
+
+
+// onMounted(() => {
+//     // Cargar Google Maps dinámicamente
+//     const script = document.createElement('script')
+//     script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=marker,places&callback=initMap`
+//     script.async = true
+//     script.defer = true
+//     window.initMap = initMap
+//     document.head.appendChild(script)
+//     setUserLocation();
+//     fetchLocations();
+//     fetchTipos();
+// });
+
+onMounted(() => {
+  const mapSection = document.getElementById('seccion2')
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadGoogleMaps()
+        observer.disconnect()
+      }
+    }, { threshold: 0.25 }) // 25% visible
+    observer.observe(mapSection)
+  } else {
+    // fallback: scroll listener clásico
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > window.innerHeight * 0.25) {
+        loadGoogleMaps()
+      }
+    })
+  }
+})
+
+
 
 watch([filterType, searchQuery], applyFilters, { immediate: true });
 </script>

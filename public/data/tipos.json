@@ -1,42 +1,18 @@
 [
     {
-        "name": "MINIMARKET",
-        "value": "MINIMARKET"
-    },
-    {
         "name": "BODEGA",
         "value": "BODEGA"
     },
     {
-        "name": "PUESTOS DE MERCADO",
-        "value": "PUESTOS DE MERCADO"
+        "name": "MINIMARKET",
+        "value": "MINIMARKET"
     },
     {
         "name": "PANADERIAS",
         "value": "PANADERIAS"
     },
     {
-        "name": "BODEGA ABIERTA",
-        "value": "BODEGA ABIERTA"
-    },
-    {
-        "name": "BODEGA REJA",
-        "value": "BODEGA REJA"
-    },
-    {
-        "name": "BODEGA VENTANA",
-        "value": "BODEGA VENTANA"
-    },
-    {
-        "name": "PDM ABARROTES",
-        "value": "PDM ABARROTES"
-    },
-    {
-        "name": "PDM EMBUTIDOS",
-        "value": "PDM EMBUTIDOS"
-    },
-    {
-        "name": "LUGAR DE POCO ACCESO",
-        "value": "LUGAR DE POCO ACCESO"
+        "name": "PUESTOS DE MERCADO",
+        "value": "PUESTOS DE MERCADO"
     }
 ]
