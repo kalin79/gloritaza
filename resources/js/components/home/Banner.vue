@@ -12,7 +12,7 @@
                         </h2>
                         <button class="btnGral titleBotonGrande active" @click="scrollToSection('#seccion2')">
                             <img :src="imgBtn" alt="Encuentra tu tienda más cercana" />
-                            <span>Encuentra tu tienda más cercana</span>
+                            <span>Encuentra tu centro de canje más cercano</span>
                         </button>
                     </div>
                 </div>

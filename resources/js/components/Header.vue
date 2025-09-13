@@ -1,5 +1,6 @@
 <template>
-    <header class="headerContainerMain" ref="navbar">
+    <header class="headerContainerMain" >
+        <div class="mantaHeader" ref="navbar"></div>
         <div class="containerFluid">
             <div class="gridContainer">
                 <div>

@@ -10,8 +10,8 @@
                         <div class="bodyInfo">
                             <div class="pc">
                                 <h3 class="tituloMediano colorTxtAzul">
-                                    ¿Como llevarte <br />
-                                    tu gloritaza?
+                                    ¿Cómo llevarte <br />
+                                    tu Gloritaza?
                                 </h3>
                             </div>
                             <div class="movil">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="footerInfo">
                             <div class="fechaContainer">
-                                <p class="descripcion">Canje válido del 15 de setiembre al 31 de octubre de 2025</p>
+                                <p class="">Canje válido del 15 de setiembre al 31 de octubre de 2025</p>
                             </div>
                         </div>
                     </div>

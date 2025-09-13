@@ -473,16 +473,32 @@ select:-webkit-autofill {
     }
 
     .headerMapa {
+
         .filtrosContent {
             display: flex;
             justify-content: center;
             gap: 1rem;
             align-items: center;
+            flex-direction: column;
+
+            @media screen and (min-width: 992px) {
+                justify-content: center;
+                gap: 1rem;
+                align-items: center;
+                flex-direction: row;
+            }
 
             .ubicacionBox {
                 display: flex;
                 align-items: center;
                 gap: .5rem;
+                order: 2;
+                margin-bottom: 1rem;
+
+                @media screen and (min-width: 992px) {
+                    order: 1;
+                    margin-bottom: 0rem;
+                }
             }
         }
 
@@ -517,7 +533,15 @@ select:-webkit-autofill {
         .centerSearchContainer {
             display: flex;
             justify-content: center;
-            margin: 2rem 0;
+            margin: 2rem 0 0;
+            order: 1;
+            width: 100%;
+
+            @media screen and (min-width: 992px) {
+                order: 2;
+                width: auto;
+                margin: 2rem 0;
+            }
 
             .searchContainer {
                 width: 80%;
@@ -526,6 +550,10 @@ select:-webkit-autofill {
                 align-items: flex-start;
                 gap: .5rem;
                 height: 50px;
+
+                @media screen and (min-width: 992px) {
+                    width: 400px;
+                }
 
                 @media screen and (min-width: 1200px) {
                     width: 554px;
@@ -629,7 +657,7 @@ select:-webkit-autofill {
 
         @media screen and (min-width: 992px) {
             position: absolute;
-            top: 1rem;
+            top: 3rem;
             bottom: auto;
             left: 1rem;
             width: 407px;

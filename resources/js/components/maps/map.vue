@@ -2,51 +2,46 @@
     <div class="mapaContainer" id="seccion2">
         <div class="containerFluid">
             <div class="headerMapa">
-                <h2 class="tituloPequeno colorTxtAzul">Hay un punto de <br />canje cerca de ti</h2>
+                <h2 class="tituloPequeno colorTxtAzul">Hay un centro de canje cerca de ti</h2>
                 <p class="descripcionGrande colorTxtAzul">Encuentra dónde canjear tu Gloritaza.</p>
-                <div class="pc">
-                    <div class="filtrosContent">
-                        <div class="ubicacionBox">
-                            <label for="" class="descripcionGrande colorTxtAzul">Ubicación</label>
-                            <div class="custom-select-container">
-                                <img :src="iconDown" class="arrowDownSelect" />
-                                <select
-                                    v-model="filterType"
-                                    class="custom-select"
-                                    >
-                                    <option value="" selected>Elige Ubicación</option>
-                                    <option v-for="tipo in alltipos" :key="tipo.value" :value="tipo.value">
-                                        {{ tipo.name }}
-                                    </option>
-                                </select>
-                            </div>    
-                        </div>
-                        <div class="centerSearchContainer">
-                            <div class="searchContainer">
-                                <div class="inputSeachContainer">
-                                    <input class="descripcionGrande colorTxtAzul" ref="inputRef" type="text" v-model="searchQuery" placeholder="Buscar por distrito o dirección" @input="applyFilters" />
-                                    <img :src="imgSearch" alt="" />
-                                </div>
-                                <!-- <div class="btnContainer">
-                                    <button class="descripcionGrande btnGral active colorTxtBlanco">Buscar</button>
-                                </div> -->
+                <div class="filtrosContent">
+                    <div class="ubicacionBox">
+                        <label for="" class="descripcionGrande colorTxtAzul pc">Ubicación</label>
+                        <div class="custom-select-container">
+                            <!-- <img :src="iconDown" class="arrowDownSelect" /> -->
+                            <select
+                                v-model="filterType"
+                                class="custom-select"
+                                >
+                                <option value="" selected>Elige Ubicación</option>
+                                <option v-for="tipo in alltipos" :key="tipo.value" :value="tipo.value">
+                                    {{ tipo.name }}
+                                </option>
+                            </select>
+                        </div>    
+                    </div>
+                    <div class="centerSearchContainer">
+                        <div class="searchContainer">
+                            <div class="inputSeachContainer">
+                                <input class="descripcionGrande colorTxtAzul" ref="inputRef" type="text" v-model="searchQuery" placeholder="Buscar por distrito o dirección" @input="applyFilters" />
+                                <img :src="imgSearch" alt="" />
                             </div>
+                            <!-- <div class="btnContainer">
+                                <button class="descripcionGrande btnGral active colorTxtBlanco">Buscar</button>
+                            </div> -->
                         </div>
                     </div>
                 </div>
-                <div class="movil">
+                <!-- <div class="movil">
                     <div class="centerSearchContainer">
-                            <div class="searchContainer">
-                                <div class="inputSeachContainer">
-                                    <input class="descripcionGrande colorTxtAzul" ref="inputRef" type="text" v-model="searchQuery" placeholder="Buscar por distrito o dirección" @input="applyFilters" />
-                                    <img :src="imgSearch" alt="" />
-                                </div>
-                                <!-- <div class="btnContainer">
-                                    <button class="descripcionGrande btnGral active colorTxtBlanco">Buscar</button>
-                                </div> -->
+                        <div class="searchContainer">
+                            <div class="inputSeachContainer">
+                                <input class="descripcionGrande colorTxtAzul" ref="inputRef" type="text" v-model="searchQuery" placeholder="Buscar por distrito o dirección" @input="applyFilters" />
+                                <img :src="imgSearch" alt="" />
                             </div>
                         </div>
-                </div>
+                    </div>
+                </div> -->
             </div>
             <div class="map-container">
                 <div class="pc">
@@ -81,23 +76,7 @@
                 <div id="map" class="mapGoogleContainer"></div>
             </div>
             <div class="movil">
-                <div class="filtrosContentMovil">
-                    <div class="ubicacionBox">
-                        <label for="" class="descripcionGrande colorTxtAzul">Ubicación</label>
-                        <div class="custom-select-container">
-                            <img :src="iconDown" class="arrowDownSelect" />
-                            <select
-                                v-model="filterType"
-                                class="custom-select"
-                                >
-                                <option value="" selected>Elige Ubicación</option>
-                                <option v-for="tipo in alltipos" :key="tipo.value" :value="tipo.value">
-                                    {{ tipo.name }}
-                                </option>
-                            </select>
-                        </div>    
-                    </div>
-                </div>
+                
                 <div class="listadoUbicacionMovil">
                     <div class="listContainer">
                         <div class="lisScrollContainer">
@@ -192,21 +171,6 @@ const applyFilters = () => {
     }
 
     if (searchQuery.value) {
-        // filtered = filtered.filter(location =>
-        // location.address.toLowerCase().includes(searchQuery.value.toLowerCase())
-        // );
-
-        // const queryWords = searchQuery.value.toLowerCase().split(/[\s,]+/).filter(word => word.trim() !== '');
-        // filtered = filtered.filter(location => {
-        //     const nameLower = location.name.toLowerCase();
-        //     const addressLower = location.address.toLowerCase();
-        //     const distritoLower = location.distrito.toLowerCase();
-        //     return queryWords.some(word => 
-        //         nameLower.includes(word) || 
-        //         addressLower.includes(word) || 
-        //         distritoLower.includes(word)
-        //     );
-        // });
 
         const queryWords = searchQuery.value.toLowerCase().split(/[\s,]+/).filter(word => word.trim() !== '');
 
@@ -229,17 +193,34 @@ const applyFilters = () => {
         }
     }
 
-    filtered = filtered.filter(location => {
-        const distance = calculateDistance(
+    // Ordenar por distancia de menor a mayor
+    filtered.sort((a, b) => {
+        const distanceA = calculateDistance(
         initialCenter.value.lat,
         initialCenter.value.lng,
-        parseFloat(location.lat),
-        parseFloat(location.lng)
+        parseFloat(a.lat),
+        parseFloat(a.lng)
         );
-        console.log(`Distancia a ${location.name}: ${distance.toFixed(2)} km`);
-        // return distance <= radiusKm;
-        return distance
+        const distanceB = calculateDistance(
+        initialCenter.value.lat,
+        initialCenter.value.lng,
+        parseFloat(b.lat),
+        parseFloat(b.lng)
+        );
+        return distanceA - distanceB; // Orden ascendente (menor a mayor)
     });
+
+    // filtered = filtered.filter(location => {
+    //     const distance = calculateDistance(
+    //     initialCenter.value.lat,
+    //     initialCenter.value.lng,
+    //     parseFloat(location.lat),
+    //     parseFloat(location.lng)
+    //     );
+    //     console.log(`Distancia a ${location.name}: ${distance.toFixed(2)} km`);
+    //     return distance <= radiusKm;
+    //     return distance
+    // });
 
     locations.value = filtered;
     console.log('Final locations count:', locations.value.length);
@@ -386,10 +367,24 @@ const setUserLocation = () => {
         },
         (error) => {
             console.warn('Geolocation denied or error:', error);
-        }
+            // Fallback a coordenadas predeterminadas
+            initialCenter.value = { lat: -12.046374, lng: -77.042793 };
+            center.value = { ...initialCenter.value };
+            if (isMapReady.value && map.value) {
+            map.value.setCenter(center.value);
+                applyFilters();
+            }
+        },
+        { timeout: 10000, enableHighAccuracy: true }
         );
     } else {
         console.warn('Geolocation is not supported by this browser.');
+        initialCenter.value = { lat: -12.046374, lng: -77.042793 };
+        center.value = { ...initialCenter.value };
+        if (isMapReady.value && map.value) {
+            map.value.setCenter(center.value);
+            applyFilters();
+        }
     }
 };
 
@@ -414,49 +409,74 @@ const initMap = () => {
   if (window.google && window.google.maps) {
     const mapElement = document.getElementById('map');
     if (mapElement) {
-        map.value = new window.google.maps.Map(mapElement, { center: center.value, zoom: 15, mapId });
+        map.value = new window.google.maps.Map(mapElement, { center: center.value, zoom: 17, mapId });
         infoWindow.value = new window.google.maps.InfoWindow();
         isMapReady.value = true;
         console.log('Map initialized with mapId:', mapId);
+        setUserLocation(); // Obtener ubicación del usuario
+        fetchLocations(); // Cargar ubicaciones
+        fetchTipos(); // Cargar tipos
         applyFilters(); // Renderizar marcadores iniciales
         // Inicializar el autocompletado
         if (window.google.maps.places) {
-        autocomplete.value = new window.google.maps.places.Autocomplete(inputRef.value, {
-            fields: ['place_id', 'geometry', 'name', 'formatted_address'],
-            types: ['address'], // Restringe a direcciones
-            componentRestrictions: { country: 'PE' } // Limita a Perú
-        });
-        autocomplete.value.addListener('place_changed', () => {
-            const place = autocomplete.value.getPlace();
-            if (place.geometry && place.geometry.location) {
-            const newCenter = {
-                lat: place.geometry.location.lat(),
-                lng: place.geometry.location.lng(),
-            };
-            center.value = newCenter;
-            map.value.setCenter(newCenter);
-            map.value.setZoom(15);
-
-            // Agregar un marcador en la ubicación seleccionada
-            if (map.value.markers) {
-                map.value.markers.forEach(marker => marker.setMap(null));
-            }
-            map.value.markers = [];
-            const marker = new window.google.maps.Marker({
-                map: map.value,
-                position: newCenter,
-                title: place.name || place.formatted_address,
-                icon: getMarkerIcon('default'),
+            autocomplete.value = new window.google.maps.places.Autocomplete(inputRef.value, {
+                fields: ['place_id', 'geometry', 'name', 'formatted_address'],
+                types: [], // Restringe a direcciones
+                componentRestrictions: { country: 'PE' } // Limita a Perú
             });
-            map.value.markers.push(marker);
+            autocomplete.value.addListener('place_changed', () => {
+                const place = autocomplete.value.getPlace();
+                if (place.geometry && place.geometry.location) {
+                    const newCenter = {
+                        lat: place.geometry.location.lat(),
+                        lng: place.geometry.location.lng(),
+                    };
+                    center.value = newCenter;
+                    initialCenter.value = newCenter; // Actualizar la ubicación inicial
+                    map.value.setCenter(newCenter);
+                    map.value.setZoom(17);
 
-            // Actualizar searchQuery con la dirección seleccionada
-            searchQuery.value = place.formatted_address || '';
-            applyFilters(); // Reaplicar filtros con la nueva ubicación
-            }
-        });
+                    // Actualizar o crear el marcador de ubicación del usuario
+                    if (map.value.userMarker) {
+                        map.value.userMarker.setMap(null); // Eliminar el marcador anterior
+                    }
+                    map.value.userMarker = new window.google.maps.Marker({
+                        position: newCenter,
+                        map: map.value,
+                        title: "Tu ubicación",
+                        icon: {
+                            url: "/images/ping2.png",
+                            scaledSize: new window.google.maps.Size(40, 40),
+                        },
+                    });
+
+                    // Agregar un marcador en la ubicación seleccionada
+                    if (map.value.markers) {
+                        map.value.markers.forEach(marker => marker.setMap(null));
+                    }
+                    map.value.markers = [];
+                    const marker = new window.google.maps.Marker({
+                        map: map.value,
+                        position: newCenter,
+                        title: place.name || place.formatted_address,
+                        icon: getMarkerIcon('default'),
+                    });
+                    map.value.markers.push(marker);
+
+                    // Actualizar searchQuery con la dirección seleccionada
+                    searchQuery.value = place.formatted_address || '';
+                    applyFilters(); // Reaplicar filtros con la nueva ubicación
+                }else{
+                    console.error('No geometry data available for the selected place');
+                }
+            });
         } else {
-        console.error('Places API not loaded');
+            console.error('Places API not loaded');
+        }
+        // Asegurar que la ubicación se establezca después de inicializar
+        if (!center.value.lat || !center.value.lng) {
+            console.log('OK MUNDO')
+            setUserLocation();
         }
     } else {
       console.error('Map element not found in DOM');
@@ -473,11 +493,12 @@ const loadGoogleMaps = () => {
     script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=marker,places&callback=initMap`
     script.async = true
     script.defer = true
+    script.onerror = () => console.error('Error loading Google Maps API. Check your API key and network.');
     window.initMap = initMap
     document.head.appendChild(script)
-    setUserLocation();
-    fetchLocations();
-    fetchTipos();
+    // setUserLocation();
+    // fetchLocations();
+    // fetchTipos();
 }
 
 
@@ -514,6 +535,28 @@ onMounted(() => {
     })
   }
 })
+
+// onMounted(() => {
+//   const mapSection = document.getElementById('seccion2');
+//   setTimeout(() => {
+//     loadGoogleMaps();
+//   }, 500); // Retraso mínimo para no bloquear la UI
+//   if ('IntersectionObserver' in window) {
+//     const observer = new IntersectionObserver((entries) => {
+//       if (entries[0].isIntersecting) {
+//         if (!isMapReady.value) loadGoogleMaps();
+//         observer.disconnect();
+//       }
+//     }, { threshold: 0.25 });
+//     observer.observe(mapSection);
+//   } else {
+//     window.addEventListener('scroll', () => {
+//       if (window.scrollY > window.innerHeight * 0.25 && !isMapReady.value) {
+//         loadGoogleMaps();
+//       }
+//     });
+//   }
+// });
 
 
 

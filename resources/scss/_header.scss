@@ -10,6 +10,19 @@
         height: auto;
     }
 
+    .mantaHeader {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 88px;
+    }
+
+    .containerFluid {
+        position: relative;
+        z-index: 3;
+    }
+
     .gridContainer {
         display: grid;
         grid-template-columns: repeat(8, 1fr);

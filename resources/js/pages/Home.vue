@@ -22,19 +22,20 @@ useHead({
     { name: 'keywords', content: 'Gloritaza Gloria, canje gloritaza, promoción Gloria, taza Gloria, promo leche Gloria' },
     { property: 'og:title', content: '¡Canjea tu Gloritaza Hoy! | Promoción Leche Gloria' },
     { property: 'og:description', content: 'Canjea tu Gloritaza con 3 etiquetas de Leche Gloria + S/3.50. Consulta los puntos de canje y participa antes de que se acaben.' },
-    { property: 'og:image', content: 'https://gloria.pe/assets/gloritaza/og-image.jpg' },
-    { property: 'og:url', content: 'https://gloria.pe/promociones/gloritaza' },
+    { name: 'image', content: 'https://qa.gloritazas.pe/images/og-image.jpg' },
+    { property: 'og:image', content: 'https://qa.gloritazas.pe/images/og-image.jpg' },
+    { property: 'og:url', content: 'https://qa.gloritazas.pe' },
     { property: 'og:type', content: 'website' },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: '¡Canjea tu Gloritaza Hoy!' },
     { name: 'twitter:description', content: 'Participa en la promoción oficial y canjea tu Gloritaza. Encuentra tu punto de canje más cercano.' },
-    { name: 'twitter:image', content: 'https://gloria.pe/assets/gloritaza/og-image.jpg' },
+    { name: 'twitter:image', content: 'https://qa.gloritazas.pe/images/og-image.jpg' },
     { name: 'twitter:site', content: '@LecheGloria' }
   ],
   link: [
-    { rel: 'canonical', href: 'https://gloria.pe/promociones/gloritaza' }
+    { rel: 'canonical', href: 'https://qa.gloritazas.pe/' }
   ],
   script: [
     {
@@ -43,7 +44,7 @@ useHead({
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": "Gloritaza Leche Gloria",
-        "image": "https://gloria.pe/assets/gloritaza/og-image.jpg",
+        "image": "https://qa.gloritazas.pe/images/og-image.jpg",
         "description": "Canjea tu Gloritaza con 3 etiquetas de Leche Gloria + S/3.50. Promoción válida hasta el 31 de octubre.",
         "brand": { "@type": "Brand", "name": "Leche Gloria" },
         "offers": {
@@ -51,7 +52,7 @@ useHead({
           "priceCurrency": "PEN",
           "price": "3.50",
           "availability": "https://schema.org/InStock",
-          "url": "https://gloria.pe/promociones/gloritaza",
+          "url": "https://qa.gloritazas.pe/",
           "priceValidUntil" : "2025-10-31"
         }
       })

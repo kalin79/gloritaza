@@ -38,7 +38,7 @@ const iconMenos= '/images/menos.svg';
 const imgPreguntas='/images/faq.webp';
 const faqs = reactive([
   {
-    categoria: "Mecánica del canje",
+    categoria: "- Mecánica del canje",
     open: false,
     fap: [
       {
@@ -55,7 +55,7 @@ const faqs = reactive([
       },
       {
         pregunta: "¿Hay un límite de canje por persona?",
-        respuesta: "No hay un límite de canje por persona. Se pueden canjear todas las tazas que desee siempre y cuando haga entrega de las 3 etiquetas y S/ 3.50 por cada taza requerida.",
+        respuesta: "No hay un límite de canje por persona. Se pueden canjear todas las tazas que desee, de acuerdo al stock que tenga el punto de canje, siempre y cuando haga entrega de 3 etiquetas de Leche Gloria de 390 g y S/ 3.50 por cada taza requerida.",
       },
       {
         pregunta: "¿Qué etiquetas participan del canje?",
@@ -64,7 +64,7 @@ const faqs = reactive([
     ]
   },
   {
-    categoria: "Dónde hacer el canje",
+    categoria: "- Dónde hacer el canje",
     open: false,
     fap: [
       {
@@ -88,7 +88,7 @@ const faqs = reactive([
     ]
   },
   {
-    categoria: "Restricciones",
+    categoria: "- Restricciones",
     open: false,
     fap: [
       {
@@ -115,7 +115,7 @@ const faqs = reactive([
     ]
   },
   {
-    categoria: "Vigencia y cobertura de la promoción",
+    categoria: "- Vigencia y cobertura de la promoción",
     open: false,
     fap: [
       {

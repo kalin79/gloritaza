@@ -30,7 +30,7 @@
                     img {
                         width: 100%;
                         height: 100%;
-                        object-fit: contain;
+                        object-fit: cover;
                     }
                 }
             }
@@ -165,12 +165,38 @@
                         .fechaContainer {
                             background: $rojo;
                             padding: .5rem .85rem;
+                            max-width: 100%;
+
+                            // @media screen and (min-width: 992px) {
+                            //     max-width: 100%;
+                            // }
+
+                            // @media screen and (min-width: 1200px) {
+                            //     max-width: 95%;
+                            // }
 
                             p {
                                 text-align: center;
+                                font-size: 1.25rem;
+                                font-family: 'misti_fontregular' !important;
+                                color: white;
+                                letter-spacing: -.05em;
 
                                 @media screen and (min-width: 768px) {
-                                    text-align: left;
+                                    text-align: center;
+                                    font-size: 1.25rem;
+                                }
+
+                                @media screen and (min-width: 992px) {
+                                    font-size: 1.25rem;
+                                }
+
+                                @media screen and (min-width: 1200px) {
+                                    font-size: 1.25rem;
+                                }
+
+                                @media screen and (min-width: 1400px) {
+                                    font-size: 1.25rem;
                                 }
                             }
                         }
@@ -196,8 +222,18 @@
 
                         .movil {
                             h3 {
-                                font-size: 3.45rem !important;
+                                font-size: 3rem !important;
                                 line-height: 1.25em !important;
+                            }
+                        }
+
+                        .pc {
+                            h3 {
+                                margin-top: -1rem;
+
+                                @media screen and (min-width: 1600px) {
+                                    margin-top: -4rem;
+                                }
                             }
                         }
 
