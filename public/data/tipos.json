@@ -1,18 +1,50 @@
 [
     {
-        "name": "BODEGA",
-        "value": "BODEGA"
+        "name": "CALLAO",
+        "value": "CALLAO"
     },
     {
-        "name": "MINIMARKET",
-        "value": "MINIMARKET"
+        "name": "LIMA",
+        "value": "LIMA"
     },
     {
-        "name": "PANADERIAS",
-        "value": "PANADERIAS"
+        "name": "AREQUIPA",
+        "value": "AREQUIPA"
     },
     {
-        "name": "PUESTOS DE MERCADO",
-        "value": "PUESTOS DE MERCADO"
+        "name": "CHICLAYO",
+        "value": "CHICLAYO"
+    },
+    {
+        "name": "CUSCO",
+        "value": "CUSCO"
+    },
+    {
+        "name": "HUANCAYO",
+        "value": "HUANCAYO"
+    },
+    {
+        "name": "ICA",
+        "value": "ICA"
+    },
+    {
+        "name": "IQUITOS",
+        "value": "IQUITOS"
+    },
+    {
+        "name": "PIURA",
+        "value": "PIURA"
+    },
+    {
+        "name": "TARAPOTO",
+        "value": "TARAPOTO"
+    },
+    {
+        "name": "TRUJILLO",
+        "value": "TRUJILLO"
+    },
+    {
+        "name": "TACNA",
+        "value": "TACNA"
     }
 ]

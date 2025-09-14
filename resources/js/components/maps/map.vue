@@ -11,6 +11,7 @@
                             <!-- <img :src="iconDown" class="arrowDownSelect" /> -->
                             <select
                                 v-model="filterType"
+                                @change="applyFilters"
                                 class="custom-select"
                                 >
                                 <option value="" selected>Elige Ubicación</option>
@@ -57,9 +58,9 @@
                                         <img :src="iconping" :alt="location.address"/>
                                         <span>{{ location.address }}</span>
                                     </p>
-                                    <p class="alignItems descripcionMediano colorTxtAzul">
+                                    <p class="alignItems descripcionMediano colorTxtAzul" v-if="location.horario && location.horario.length > 0">
                                         <img :src="iconhorario" :alt="location.address"/>
-                                        <span>{{ location.hours }}</span>
+                                        <span>{{ location.horario }}</span>
                                     </p>
                                     <p class="alignItems descripcionMediano colorTxtAzul">
                                         <img :src="icondistancia" :alt="location.address"/>
@@ -90,9 +91,9 @@
                                         <img :src="iconping" :alt="location.address"/>
                                         <span>{{ location.address }}</span>
                                     </p>
-                                    <p class="alignItems descripcionMediano colorTxtAzul">
+                                    <p class="alignItems descripcionMediano colorTxtAzul" v-if="location.horario && location.horario.length > 0">
                                         <img :src="iconhorario" :alt="location.address"/>
-                                        <span>{{ location.hours }}</span>
+                                        <span>{{ location.horario }}</span>
                                     </p>
                                     <p class="alignItems descripcionMediano colorTxtAzul">
                                         <img :src="icondistancia" :alt="location.address"/>
@@ -140,6 +141,7 @@ const iconlocal='/images/iconlocal.svg';
 const iconping='/images/iconping.svg';
 const iconhorario='/images/iconhorario.svg';
 const icondistancia='/images/icondistancia.svg';
+const isLoadingLocations = ref(true); // bandera de carga
 const iconDown='/images/down.svg'
 const fetchTipos = async () => {
     try {
@@ -154,20 +156,31 @@ const fetchTipos = async () => {
 }
 
 const fetchLocations = async () => {
-    try {
-        const response = await axios.get('/data/locations.json');
-        allLocations.value = response.data;
-        applyFilters();
-    } catch (error) {
-        console.error('Error fetching locations:', error);
-    }
+  try {
+    const response = await axios.get('/data/locations.json');
+    allLocations.value = response.data;
+
+    // ⚡ Mostrar que aún no se renderizan los resultados
+    isLoadingLocations.value = true;
+    locations.value = [];
+
+    // Delay pequeño para que el mapa cargue primero
+    setTimeout(() => {
+      applyFilters();
+      isLoadingLocations.value = false;
+    }, 800);
+  } catch (error) {
+    console.error('Error fetching locations:', error);
+  }
 };
+
 
 const applyFilters = () => {
     let filtered = [...allLocations.value];
-
+    console.log(filterType.value)
     if (filterType.value) {
-        filtered = filtered.filter(location => location.type === filterType.value);
+        console.log(filterType.value)
+        filtered = filtered.filter(location => location.ciudad === filterType.value);
     }
 
     if (searchQuery.value) {
@@ -222,17 +235,18 @@ const applyFilters = () => {
         // 🔹 Crear marcadores normales
 
         locations.value.forEach(location => {
-            const marker = new window.google.maps.Marker({
-                map: map.value,
-                position: { lat: parseFloat(location.lat), lng: parseFloat(location.lng) },
-                title: location.name,
-                icon: getMarkerIcon(location.type), // <-- aquí el icono correcto
-            });
+        const marker = new window.google.maps.Marker({
+            map: map.value,
+            position: { lat: parseFloat(location.lat), lng: parseFloat(location.lng) },
+            title: location.name,
+            icon: getMarkerIcon(location.type),
+            // animation: window.google.maps.Animation.DROP, // 🔹 animación
+            animation: /iPhone|iPad|iPod/i.test(navigator.userAgent) ? null : window.google.maps.Animation.DROP,
 
-            // Al hacer clic en un marcador abrir InfoWindow
-            marker.addListener('click', () => openInfoWindow(location));
+        });
 
-            map.value.markers.push(marker);
+        marker.addListener('click', () => openInfoWindow(location));
+        map.value.markers.push(marker);
         });
     }
     
@@ -286,7 +300,7 @@ const openInfoWindow = (location) => {
         <div>
             <h3>${location.name}</h3>
             <p>${location.address}</p>
-            <p>Horarios: ${location.hours}</p>
+            <p>Horarios: ${location.horario}</p>
         </div>
         `);
 
@@ -391,11 +405,10 @@ const initMap = () => {
             infoWindow.value = new window.google.maps.InfoWindow();
             isMapReady.value = true;
             console.log('Map initialized with mapId:', mapId);
-            setUserLocation(); // Obtener ubicación del usuario
-            fetchLocations(); // Cargar ubicaciones
-            fetchTipos(); // Cargar tipos
-            applyFilters(); // Renderizar marcadores iniciales
-            // Inicializar el autocompletado
+            // 2. Cargar datos y ubicación en segundo plano
+            setUserLocation();  // ubicar usuario
+            fetchLocations();   // traer ubicaciones y pings (con delay)
+            fetchTipos();       // cargar tipos
             if (window.google.maps.places) {
                 autocomplete.value = new window.google.maps.places.Autocomplete(inputRef.value, {
                     fields: ['place_id', 'geometry', 'name', 'formatted_address'],
@@ -467,38 +480,23 @@ const initMap = () => {
 
 const loadGoogleMaps = () => {
     if (isMapReady.value) return; // Evitar recargar
-    // Cargar Google Maps dinámicamente
     if (!window.google) {
-        const script = document.createElement('script')
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=marker,places&callback=initMap`
-        script.async = true
-        script.defer = true
-        script.onerror = () => console.error('Error loading Google Maps API. Check your API key and network.');
-        window.initMap = () => {
-        initMap();
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places`;
+        script.async = true;
+        script.defer = true;
+        script.onload = () => {
+        initMap(); // inicializa una sola vez
         };
-        document.head.appendChild(script)
-    } else{
+        script.onerror = () => console.error('Error loading Google Maps API. Check your API key and network.');
+        document.head.appendChild(script);
+    } else {
         initMap();
     }
-    // setUserLocation();
-    // fetchLocations();
-    // fetchTipos();
-}
+};
 
 
-// onMounted(() => {
-//     // Cargar Google Maps dinámicamente
-//     const script = document.createElement('script')
-//     script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=marker,places&callback=initMap`
-//     script.async = true
-//     script.defer = true
-//     window.initMap = initMap
-//     document.head.appendChild(script)
-//     setUserLocation();
-//     fetchLocations();
-//     fetchTipos();
-// });
+
 
 onMounted(() => {
   const mapSection = document.getElementById('seccion2')

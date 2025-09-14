@@ -16,9 +16,9 @@
                             </div>
                             <div class="movil">
                                 <h3 class="tituloMediano colorTxtAzul topmarginH3">
-                                    ¿Como <br />
+                                    ¿Cómo <br />
                                     llevarte tu <br />
-                                    gloritaza?
+                                    Gloritaza?
                                 </h3>
                             </div>
                         </div>
