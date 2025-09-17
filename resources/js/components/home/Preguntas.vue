@@ -59,7 +59,7 @@ const faqs = reactive([
       },
       {
         pregunta: "¿Qué etiquetas participan del canje?",
-        respuesta: "Participan las latas de Leche Gloria de 390 g: Azul, Niños, Light, Evaporada, Zero Lacto, Quinua o Quinua, Kiwicha o Cañihua.",
+        respuesta: "Participan las latas de Leche Gloria de 390 g: Azul, Niños, Light, Evaporada, Zero Lacto, Quinua o Quinua, Kiwicha y Cañihua.",
       },
     ]
   },
